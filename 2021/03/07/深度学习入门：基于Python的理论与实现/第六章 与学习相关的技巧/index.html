@@ -6,28 +6,28 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>第六章 与学习相关的技巧 | Mouse�Ĳ���</title>
+  <title>第六章 与学习相关的技巧 | Mouse</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="前言参数更新：为了寻找损失函数最小的参数，而采用的方法权值的初始化：初始化赋值严重影响神经网络学习效果的因素Batch Normalization：提高学习效率，避免对权重初始值的依赖正则化：降低过拟合方法，权值衰减和Dropout超参数的验证：逐渐缩小“好值”存在的范围是寻找超参数的有效方法 参数更新   学习的目的就是为了寻找参数使神经网络的损失函数达到最小值，寻找这个参数的过程被称为最优化。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="第六章 与学习相关的技巧">
 <meta property="og:url" content="http://example.com/2021/03/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E4%B8%8E%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3%E7%9A%84%E6%8A%80%E5%B7%A7/index.html">
-<meta property="og:site_name" content="Mouse�Ĳ���">
+<meta property="og:site_name" content="Mouse">
 <meta property="og:description" content="前言参数更新：为了寻找损失函数最小的参数，而采用的方法权值的初始化：初始化赋值严重影响神经网络学习效果的因素Batch Normalization：提高学习效率，避免对权重初始值的依赖正则化：降低过拟合方法，权值衰减和Dropout超参数的验证：逐渐缩小“好值”存在的范围是寻找超参数的有效方法 参数更新   学习的目的就是为了寻找参数使神经网络的损失函数达到最小值，寻找这个参数的过程被称为最优化。">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2021/03/07/image/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/SGD%E5%85%AC%E5%BC%8F.jpg">
-<meta property="og:image" content="http://example.com/2021/03/07/image/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/Momentum%E5%85%AC%E5%BC%8F.jpg">
-<meta property="og:image" content="http://example.com/2021/03/07/image/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/AdaGrad%E5%85%AC%E5%BC%8F.jpg">
-<meta property="og:image" content="http://example.com/2021/03/07/image/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/BN%E5%85%AC%E5%BC%8F.jpg">
-<meta property="og:image" content="http://example.com/2021/03/07/image/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/SM%E5%85%AC%E5%BC%8F.jpg">
+<meta property="og:image" content="http://example.com/image/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/SGD%E5%85%AC%E5%BC%8F.jpg">
+<meta property="og:image" content="http://example.com/image/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/Momentum%E5%85%AC%E5%BC%8F.jpg">
+<meta property="og:image" content="http://example.com/image/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/AdaGrad%E5%85%AC%E5%BC%8F.jpg">
+<meta property="og:image" content="http://example.com/image/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/BN%E5%85%AC%E5%BC%8F.jpg">
+<meta property="og:image" content="http://example.com/image/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/SM%E5%85%AC%E5%BC%8F.jpg">
 <meta property="article:published_time" content="2021-03-07T07:12:34.048Z">
 <meta property="article:modified_time" content="2021-03-07T07:34:45.870Z">
-<meta property="article:author" content="Jack">
+<meta property="article:author" content="John Doe">
 <meta property="article:tag" content="深度学习入门">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2021/03/07/image/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/SGD%E5%85%AC%E5%BC%8F.jpg">
+<meta name="twitter:image" content="http://example.com/image/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/SGD%E5%85%AC%E5%BC%8F.jpg">
   
-    <link rel="alternative" href="/atom.xml" title="Mouse�Ĳ���" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Mouse" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -185,19 +185,19 @@
 <li><strong>SGD</strong>：随机梯度下降算法，将参数的梯度，作为寻找最优参数的线索</li>
 </ol>
 <p>   公式：</p>
-<p><img src="../../image/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/SGD%E5%85%AC%E5%BC%8F.jpg" alt="SGD公式"></p>
+<p><img src="/image/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/SGD%E5%85%AC%E5%BC%8F.jpg" alt="SGD公式"></p>
 <p>   代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SGD</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;随机梯度下降法（Stochastic Gradient Descent）&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, lr=<span class="number">0.01</span></span>):</span></span><br><span class="line">        self.lr = lr    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update</span>(<span class="params">self, params, grads</span>):</span></span><br><span class="line">        <span class="string">&#x27;&#x27;&#x27;</span></span><br><span class="line"><span class="string">        参数 params和 grads（与之前的神经网络</span></span><br><span class="line"><span class="string">        的实现一样）是字典型变量，按 params[&#x27;W1&#x27;]、 grads[&#x27;W1&#x27;]的形式，分别保</span></span><br><span class="line"><span class="string">        存了权重参数和它们的梯度</span></span><br><span class="line"><span class="string">        &#x27;&#x27;&#x27;</span></span><br><span class="line">        <span class="keyword">for</span> key <span class="keyword">in</span> params.keys():</span><br><span class="line">            params[key] -= self.lr * grads[key] </span><br></pre></td></tr></table></figure>
 <p>   缺点：如果函数的的形状非匀向，搜索的路径就会非常低效<br>   2. <strong>Momentum</strong>： </p>
 <p>   公式：</p>
-<p><img src="../../image/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/Momentum%E5%85%AC%E5%BC%8F.jpg" alt="Momentum公式"></p>
+<p><img src="/image/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/Momentum%E5%85%AC%E5%BC%8F.jpg" alt="Momentum公式"></p>
 <p>   代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Momentum</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;Momentum SGD</span></span><br><span class="line"><span class="string">    V表示力作用在其上以后，产生的速度。</span></span><br><span class="line"><span class="string">    Momentum相比于SGD对非匀向型的函数，有更好的适应性</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, lr=<span class="number">0.01</span>, momentum=<span class="number">0.9</span></span>):</span></span><br><span class="line">        self.lr = lr</span><br><span class="line">        self.momentum = momentum</span><br><span class="line">        self.v = <span class="literal">None</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update</span>(<span class="params">self, params, grads</span>):</span></span><br><span class="line">        <span class="keyword">if</span> self.v <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            self.v = &#123;&#125;</span><br><span class="line">            <span class="keyword">for</span> key, val <span class="keyword">in</span> params.items():                             </span><br><span class="line">                self.v[key] = np.zeros_like(val)</span><br><span class="line">        <span class="keyword">for</span> key <span class="keyword">in</span> params.keys():</span><br><span class="line">            self.v[key] = self.momentum*self.v[key] - self.lr*grads[key] </span><br><span class="line">            params[key] += self.v[key]</span><br></pre></td></tr></table></figure>
 <ol start="3">
 <li><strong>AdaGrad</strong></li>
 </ol>
 <p>   公式：</p>
-<p><img src="../../image/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/AdaGrad%E5%85%AC%E5%BC%8F.jpg" alt="AdaGrad公式"></p>
+<p><img src="/image/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/AdaGrad%E5%85%AC%E5%BC%8F.jpg" alt="AdaGrad公式"></p>
 <p>   代码：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AdaGrad</span>:</span></span><br><span class="line">    <span class="string">&quot;&quot;&quot;AdaGrad为参数的每个元素调整学习率，与前面相比较它保存了以前所有梯度的平方和，参数的元素中变动较大的元素的学习率将变小&quot;&quot;&quot;</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, lr=<span class="number">0.01</span></span>):</span></span><br><span class="line">        self.lr = lr</span><br><span class="line">        self.h = <span class="literal">None</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update</span>(<span class="params">self, params, grads</span>):</span></span><br><span class="line">        <span class="keyword">if</span> self.h <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">            self.h = &#123;&#125;</span><br><span class="line">            <span class="keyword">for</span> key, val <span class="keyword">in</span> params.items():</span><br><span class="line">                self.h[key] = np.zeros_like(val)</span><br><span class="line">        <span class="keyword">for</span> key <span class="keyword">in</span> params.keys():</span><br><span class="line">            self.h[key] += grads[key] * grads[key]</span><br><span class="line">            params[key] -= self.lr * grads[key] / (np.sqrt(self.h[key]) + <span class="number">1e-7</span>)</span><br></pre></td></tr></table></figure>
 
@@ -212,9 +212,9 @@
 <li><strong>抑制过拟合，降低Dropout的必要性</strong></li>
 </ol>
 <p>  数学公式：</p>
-<p><img src="../../image/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/BN%E5%85%AC%E5%BC%8F.jpg" alt="BN公式"></p>
+<p><img src="/image/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/BN%E5%85%AC%E5%BC%8F.jpg" alt="BN公式"></p>
 <p>   一般情况下，在激活层的前面或者后面添加一个BN层，将数据进行正规化后采用下面的公式，将正规化数据进行缩放和平移。经过有BN层以后的对比实验发现，BN层引入以后对权重初始值健壮性有所提高，也就是对权重初始值，没有那么依赖了</p>
-<p><img src="../../image/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/SM%E5%85%AC%E5%BC%8F.jpg" alt="BN公式"></p>
+<p><img src="/image/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/SM%E5%85%AC%E5%BC%8F.jpg" alt="BN公式"></p>
 <h4 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h4><p>   正则化的提出，为了降低模型过拟合，提高泛化能力。<br>   分析过拟合产生的原因：</p>
 <ol>
 <li>训练数据少</li>
@@ -401,7 +401,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2021 Jack
+    		&copy; 2021 John Doe
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
