@@ -43,11 +43,13 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="/img/mouse.jfif" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/"></a></h1>
+		  <h1 class="header-author"><a href="/">Mouse</a></h1>
 		</hgroup>
+		
+		<p class="header-subtitle">乾坤未定，你我皆是黑马</p>
 		
 
 		<nav class="header-menu">
@@ -66,8 +68,6 @@
     			
             
     			
-    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
-    			
             
     			
     			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
@@ -77,13 +77,11 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/victory-99" title="github"><i class="icon-github"></i></a>
 		        
 					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
 		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+					<a class="mail" target="_blank" href="/qnzcwei@163.com" title="mail"><i class="icon-mail"></i></a>
 		        
 			</div>
 		</nav>
@@ -101,11 +99,13 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="/img/mouse.jfif" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author"></h1>
+			  <h1 class="header-author js-header-author">Mouse</h1>
 			</hgroup>
+			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>乾坤未定，你我皆是黑马<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -118,13 +118,11 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/victory-99" title="github"><i class="icon-github"></i></a>
 			        
 						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
 			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+						<a class="mail" target="_blank" href="/qnzcwei@163.com" title="mail"><i class="icon-mail"></i></a>
 			        
 				</div>
 			</nav>
@@ -263,104 +261,6 @@
 
 
   
-    <article id="post-深度学习入门：基于Python的理论与实现/第五章 误差反向传播" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/">第五章 误差反向传播</a>
-    </h1>
-  
-
-        
-        <a href="/2021/03/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/" class="archive-article-date">
-  	<time datetime="2021-03-07T07:12:34.048Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>第四章介绍神经网络，并学习通过数值微分计算神经网络的权重参数。但是，数值微分过于复杂。因此引入<strong>误差反向传播法</strong>，本章主要通过计算图理解误差反向传播。</p>
-<h4 id="5-1计算图"><a href="#5-1计算图" class="headerlink" title="5.1计算图"></a>5.1计算图</h4><pre><code>  1. 构造计算图，其节点是一种运算方式，节点具有有输入输出，图需要从左到右进行计算。也就是所谓的正向传播（从出发点到结束点）。除此之外，计算图还有反向传播，需要借助导数来实现
-  2. **运用计算图的好处：可以通过逐步局部计算得出结果。并且将精力集中于局部，使各节点计算简单，可以通过正向传播和反向传播高效计算各变量导数**
-</code></pre>
-<h4 id="5-2-链式法则"><a href="#5-2-链式法则" class="headerlink" title="5.2 链式法则"></a>5.2 链式法则</h4><p>   所谓链式法则，就是数学意义上的链式求导（复合函数求导），反向传播基于链式法则，反向传播的计算顺序就是该节点反向传播的输入乘以该节点的局部导数</p>
-<h4 id="5-3-反向传播"><a href="#5-3-反向传播" class="headerlink" title="5.3 反向传播"></a>5.3 反向传播</h4><pre><code>  1. 加法节点的反向传播：其反向传播就是**将反向传播该节点输入信号直接输出到下一个节点**，不需要正向传播时，该节点的输入信号
-  2. 乘法节点的反向传播：其反向传播就是**将反向传播该节点的输入信号*正向传播时该节点的输入信号（翻转值）**。因此，其需要正向传播的输入信号
-</code></pre>
-<h4 id="5-4-简单层的实现"><a href="#5-4-简单层的实现" class="headerlink" title="5.4 简单层的实现"></a>5.4 简单层的实现</h4><pre><code>  1. 乘法层的实现：初始化、向前传播和向后传播函数。**需要初始化变量**，用于保存正向传播的输入值
-  2. 加法层的实现：初始化、向前传播和向后传播函数。**不需要进行初始化**，初始化为pass
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MulLayer</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.x = <span class="literal">None</span></span><br><span class="line">        self.y = <span class="literal">None</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x, y</span>):</span></span><br><span class="line">        self.x = x</span><br><span class="line">        self.y = y                </span><br><span class="line">        out = x * y</span><br><span class="line">        <span class="keyword">return</span> out</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">backward</span>(<span class="params">self, dout</span>):</span></span><br><span class="line">        dx = dout * self.y</span><br><span class="line">        dy = dout * self.x</span><br><span class="line">        <span class="keyword">return</span> dx, dy</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AddLayer</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x, y</span>):</span></span><br><span class="line">        out = x + y</span><br><span class="line">        <span class="keyword">return</span> out</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">backward</span>(<span class="params">self, dout</span>):</span></span><br><span class="line">        dx = dout * <span class="number">1</span></span><br><span class="line">        dy = dout * <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> dx, dy</span><br><span class="line"></span><br><span class="line">apple = <span class="number">100</span></span><br><span class="line">apple_num = <span class="number">2</span></span><br><span class="line">orange = <span class="number">150</span></span><br><span class="line">orange_num = <span class="number">3</span></span><br><span class="line">tax = <span class="number">1.1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># layer</span></span><br><span class="line">mul_apple_layer = MulLayer()</span><br><span class="line">mul_orange_layer = MulLayer()</span><br><span class="line">add_apple_orange_layer = AddLayer()</span><br><span class="line">mul_tax_layer = MulLayer()</span><br><span class="line"></span><br><span class="line"><span class="comment"># forward</span></span><br><span class="line">apple_price = mul_apple_layer.forward(apple, apple_num) <span class="comment"># (1)</span></span><br><span class="line">orange_price = mul_orange_layer.forward(orange, orange_num) <span class="comment"># (2)</span></span><br><span class="line">all_price = add_apple_orange_layer.forward(apple_price, orange_price) <span class="comment">#(3)</span></span><br><span class="line">price = mul_tax_layer.forward(all_price, tax) <span class="comment"># (4)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># backward</span></span><br><span class="line">dprice = <span class="number">1</span></span><br><span class="line">dall_price, dtax = mul_tax_layer.backward(dprice)  <span class="comment"># (4)</span></span><br><span class="line">dapple_price, dorange_price = add_apple_orange_layer.backward(dall_price)  <span class="comment"># (3)</span></span><br><span class="line">dorange, dorange_num = mul_orange_layer.backward(dorange_price)  <span class="comment"># (2)</span></span><br><span class="line">dapple, dapple_num = mul_apple_layer.backward(dapple_price)  <span class="comment"># (1)</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">&quot;price:&quot;</span>, <span class="built_in">int</span>(price))</span><br><span class="line">print(<span class="string">&quot;dApple:&quot;</span>, dapple)</span><br><span class="line">print(<span class="string">&quot;dApple_num:&quot;</span>, <span class="built_in">int</span>(dapple_num))</span><br><span class="line">print(<span class="string">&quot;dOrange:&quot;</span>, dorange)</span><br><span class="line">print(<span class="string">&quot;dOrange_num:&quot;</span>, <span class="built_in">int</span>(dorange_num))</span><br><span class="line">print(<span class="string">&quot;dTax:&quot;</span>, dtax)</span><br></pre></td></tr></table></figure>
-
-<h4 id="5-5-激活函数层的实现"><a href="#5-5-激活函数层的实现" class="headerlink" title="5.5 激活函数层的实现"></a>5.5 激活函数层的实现</h4><pre><code>  1. ReLU层：
-     正向传播时：输入大于0时，传播该值；小于等于0时，传播0
-     反向传播时：正向传播大于0时，将上有数据原封不动传递给下游。正向传播不到与0时，反向传播戛然而止
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Relu</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.mask = <span class="literal">None</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x</span>):</span></span><br><span class="line">        self.mask = (x &lt;= <span class="number">0</span>)</span><br><span class="line">        out = x.copy()</span><br><span class="line">        out[self.mask] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> out</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">backward</span>(<span class="params">self, dout</span>):</span></span><br><span class="line">        dout[self.mask] = <span class="number">0</span></span><br><span class="line">        dx = dout</span><br><span class="line">        <span class="keyword">return</span> dx</span><br></pre></td></tr></table></figure>
-
-<pre><code>  2. Sigmoid层
-     正向传播时：按照Sigmoid函数的计算结果进行传播
-     反向传播时：一种公式根据正向传播时，该节点的输入输出进行计算。另一种公式根据正向传播时的输出就可以计算
-</code></pre>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Sigmoid的第二种反向传播</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sigmoid</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.out = <span class="literal">None</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x</span>):</span></span><br><span class="line">        out = <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br><span class="line">        self.out = out</span><br><span class="line">        <span class="keyword">return</span> out</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">backward</span>(<span class="params">self, dout</span>):</span></span><br><span class="line">        dx = dout * (<span class="number">1.0</span> - self.out) * self.out</span><br><span class="line">        <span class="keyword">return</span> dx</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">深度学习入门</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/03/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-深度学习入门：基于Python的理论与实现/第六章 与学习相关的技巧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -464,6 +364,104 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/03/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/%E7%AC%AC%E5%85%AD%E7%AB%A0%20%E4%B8%8E%E5%AD%A6%E4%B9%A0%E7%9B%B8%E5%85%B3%E7%9A%84%E6%8A%80%E5%B7%A7/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-深度学习入门：基于Python的理论与实现/第五章 误差反向传播" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/">第五章 误差反向传播</a>
+    </h1>
+  
+
+        
+        <a href="/2021/03/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/" class="archive-article-date">
+  	<time datetime="2021-03-07T07:12:34.048Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h4><p>第四章介绍神经网络，并学习通过数值微分计算神经网络的权重参数。但是，数值微分过于复杂。因此引入<strong>误差反向传播法</strong>，本章主要通过计算图理解误差反向传播。</p>
+<h4 id="5-1计算图"><a href="#5-1计算图" class="headerlink" title="5.1计算图"></a>5.1计算图</h4><pre><code>  1. 构造计算图，其节点是一种运算方式，节点具有有输入输出，图需要从左到右进行计算。也就是所谓的正向传播（从出发点到结束点）。除此之外，计算图还有反向传播，需要借助导数来实现
+  2. **运用计算图的好处：可以通过逐步局部计算得出结果。并且将精力集中于局部，使各节点计算简单，可以通过正向传播和反向传播高效计算各变量导数**
+</code></pre>
+<h4 id="5-2-链式法则"><a href="#5-2-链式法则" class="headerlink" title="5.2 链式法则"></a>5.2 链式法则</h4><p>   所谓链式法则，就是数学意义上的链式求导（复合函数求导），反向传播基于链式法则，反向传播的计算顺序就是该节点反向传播的输入乘以该节点的局部导数</p>
+<h4 id="5-3-反向传播"><a href="#5-3-反向传播" class="headerlink" title="5.3 反向传播"></a>5.3 反向传播</h4><pre><code>  1. 加法节点的反向传播：其反向传播就是**将反向传播该节点输入信号直接输出到下一个节点**，不需要正向传播时，该节点的输入信号
+  2. 乘法节点的反向传播：其反向传播就是**将反向传播该节点的输入信号*正向传播时该节点的输入信号（翻转值）**。因此，其需要正向传播的输入信号
+</code></pre>
+<h4 id="5-4-简单层的实现"><a href="#5-4-简单层的实现" class="headerlink" title="5.4 简单层的实现"></a>5.4 简单层的实现</h4><pre><code>  1. 乘法层的实现：初始化、向前传播和向后传播函数。**需要初始化变量**，用于保存正向传播的输入值
+  2. 加法层的实现：初始化、向前传播和向后传播函数。**不需要进行初始化**，初始化为pass
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MulLayer</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.x = <span class="literal">None</span></span><br><span class="line">        self.y = <span class="literal">None</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x, y</span>):</span></span><br><span class="line">        self.x = x</span><br><span class="line">        self.y = y                </span><br><span class="line">        out = x * y</span><br><span class="line">        <span class="keyword">return</span> out</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">backward</span>(<span class="params">self, dout</span>):</span></span><br><span class="line">        dx = dout * self.y</span><br><span class="line">        dy = dout * self.x</span><br><span class="line">        <span class="keyword">return</span> dx, dy</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AddLayer</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x, y</span>):</span></span><br><span class="line">        out = x + y</span><br><span class="line">        <span class="keyword">return</span> out</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">backward</span>(<span class="params">self, dout</span>):</span></span><br><span class="line">        dx = dout * <span class="number">1</span></span><br><span class="line">        dy = dout * <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> dx, dy</span><br><span class="line"></span><br><span class="line">apple = <span class="number">100</span></span><br><span class="line">apple_num = <span class="number">2</span></span><br><span class="line">orange = <span class="number">150</span></span><br><span class="line">orange_num = <span class="number">3</span></span><br><span class="line">tax = <span class="number">1.1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># layer</span></span><br><span class="line">mul_apple_layer = MulLayer()</span><br><span class="line">mul_orange_layer = MulLayer()</span><br><span class="line">add_apple_orange_layer = AddLayer()</span><br><span class="line">mul_tax_layer = MulLayer()</span><br><span class="line"></span><br><span class="line"><span class="comment"># forward</span></span><br><span class="line">apple_price = mul_apple_layer.forward(apple, apple_num) <span class="comment"># (1)</span></span><br><span class="line">orange_price = mul_orange_layer.forward(orange, orange_num) <span class="comment"># (2)</span></span><br><span class="line">all_price = add_apple_orange_layer.forward(apple_price, orange_price) <span class="comment">#(3)</span></span><br><span class="line">price = mul_tax_layer.forward(all_price, tax) <span class="comment"># (4)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># backward</span></span><br><span class="line">dprice = <span class="number">1</span></span><br><span class="line">dall_price, dtax = mul_tax_layer.backward(dprice)  <span class="comment"># (4)</span></span><br><span class="line">dapple_price, dorange_price = add_apple_orange_layer.backward(dall_price)  <span class="comment"># (3)</span></span><br><span class="line">dorange, dorange_num = mul_orange_layer.backward(dorange_price)  <span class="comment"># (2)</span></span><br><span class="line">dapple, dapple_num = mul_apple_layer.backward(dapple_price)  <span class="comment"># (1)</span></span><br><span class="line"></span><br><span class="line">print(<span class="string">&quot;price:&quot;</span>, <span class="built_in">int</span>(price))</span><br><span class="line">print(<span class="string">&quot;dApple:&quot;</span>, dapple)</span><br><span class="line">print(<span class="string">&quot;dApple_num:&quot;</span>, <span class="built_in">int</span>(dapple_num))</span><br><span class="line">print(<span class="string">&quot;dOrange:&quot;</span>, dorange)</span><br><span class="line">print(<span class="string">&quot;dOrange_num:&quot;</span>, <span class="built_in">int</span>(dorange_num))</span><br><span class="line">print(<span class="string">&quot;dTax:&quot;</span>, dtax)</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-5-激活函数层的实现"><a href="#5-5-激活函数层的实现" class="headerlink" title="5.5 激活函数层的实现"></a>5.5 激活函数层的实现</h4><pre><code>  1. ReLU层：
+     正向传播时：输入大于0时，传播该值；小于等于0时，传播0
+     反向传播时：正向传播大于0时，将上有数据原封不动传递给下游。正向传播不到与0时，反向传播戛然而止
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Relu</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.mask = <span class="literal">None</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x</span>):</span></span><br><span class="line">        self.mask = (x &lt;= <span class="number">0</span>)</span><br><span class="line">        out = x.copy()</span><br><span class="line">        out[self.mask] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> out</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">backward</span>(<span class="params">self, dout</span>):</span></span><br><span class="line">        dout[self.mask] = <span class="number">0</span></span><br><span class="line">        dx = dout</span><br><span class="line">        <span class="keyword">return</span> dx</span><br></pre></td></tr></table></figure>
+
+<pre><code>  2. Sigmoid层
+     正向传播时：按照Sigmoid函数的计算结果进行传播
+     反向传播时：一种公式根据正向传播时，该节点的输入输出进行计算。另一种公式根据正向传播时的输出就可以计算
+</code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Sigmoid的第二种反向传播</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sigmoid</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self</span>):</span></span><br><span class="line">        self.out = <span class="literal">None</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x</span>):</span></span><br><span class="line">        out = <span class="number">1</span> / (<span class="number">1</span> + np.exp(-x))</span><br><span class="line">        self.out = out</span><br><span class="line">        <span class="keyword">return</span> out</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">backward</span>(<span class="params">self, dout</span>):</span></span><br><span class="line">        dx = dout * (<span class="number">1.0</span> - self.out) * self.out</span><br><span class="line">        <span class="keyword">return</span> dx</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">深度学习入门</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/03/07/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%85%A5%E9%97%A8%EF%BC%9A%E5%9F%BA%E4%BA%8EPython%E7%9A%84%E7%90%86%E8%AE%BA%E4%B8%8E%E5%AE%9E%E7%8E%B0/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E8%AF%AF%E5%B7%AE%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD/">展开全文 >></a>
         </p>
       
 
@@ -642,8 +640,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
-      
-      
     
       
       
@@ -655,15 +651,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
-      
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -730,38 +724,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     	</section>
     
 
-    
-    	<section class="tools-section tools-section-friends" q-show="friends">
-  		
-        <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
-            </li>
-          
-        </ul>
-  		
-    	</section>
     
 
     
